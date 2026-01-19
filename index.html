@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Financeiro - Gerenciamento Completo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="icon" href="./6686287-bolsa-de-dinheiro-com-moedas-de-ouro-dolares-ilustracaoial-vetor.jpg">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <!-- Controles do Topo -->
+        <div class="top-controls">
+            <h1><i class="fas fa-chart-line"></i> Controle Financeiro</h1>
+            <div class="status-salvamento" id="statusSalvamento">
+                <i class="fas fa-check-circle"></i> Dados salvos automaticamente
+            </div>
+            <div class="theme-switch">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+                <button class="btn-export" onclick="mostrarModalBackup()">
+                    <i class="fas fa-database"></i> Backup
+                </button>
+            </div>
+        </div>
+
+        <!-- ABAS -->
+        <div class="abas">
+            <button class="aba ativa" onclick="abrirAba('financeiro')">
+                <i class="fas fa-wallet"></i> Financeiro
+            </button>
+            <button class="aba" onclick="abrirAba('cadastro')">
+                <i class="fas fa-edit"></i> Categorias
+            </button>
+            <button class="aba" onclick="abrirAba('calendario')">
+                <i class="fas fa-calendar-alt"></i> Calendário
+            </button>
+            <button class="aba" onclick="abrirAba('graficos')">
+                <i class="fas fa-chart-pie"></i> Gráficos
+            </button>
+        </div>
+
+        <!-- ABA FINANCEIRO -->
+        <div id="financeiro" class="conteudo-aba ativo">
+            <div class="form">
+                <select id="categoria"></select>
+                <input type="number" id="valor" placeholder="Valor (R$)" step="0.01">
+                <input type="date" id="data" min="2024-01-01" max="2030-12-31">
+                <select id="status">
+                    <option value="Pendente">Pendente</option>
+                    <option value="Pago">Pago</option>
+                </select>
+                <button onclick="adicionarConta()" class="btn-add">
+                    <i class="fas fa-plus"></i> Adicionar
+                </button>
+            </div>
+
+            <div class="filtro">
+                <input type="month" id="filtroMes" onchange="renderizar()">
+                <select id="filtroCategoria" onchange="renderizar()">
+                    <option value="">Todas as categorias</option>
+                </select>
+                <select id="filtroStatus" onchange="renderizar()">
+                    <option value="">Todos os status</option>
+                    <option value="Pago">Pago</option>
+                    <option value="Pendente">Pendente</option>
+                </select>
+            </div>
+
+            <div id="alerta" class="alerta"></div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Valor</th>
+                            <th>Vencimento</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaContas"></tbody>
+                </table>
+            </div>
+
+            <div class="resumo-cartoes">
+                <div class="cartao total-geral">
+                    <h3><i class="fas fa-chart-bar"></i> Total Geral</h3>
+                    <p>R$ <span id="totalGeral">0.00</span></p>
+                </div>
+                <div class="cartao total-pago">
+                    <h3><i class="fas fa-check-circle"></i> Total Pago</h3>
+                    <p>R$ <span id="totalPago">0.00</span></p>
+                </div>
+                <div class="cartao total-pendente">
+                    <h3><i class="fas fa-clock"></i> Total Pendente</h3>
+                    <p>R$ <span id="totalPendente">0.00</span></p>
+                </div>
+                <div class="cartao alertas">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Alertas</h3>
+                    <p><span id="totalAlertas">0</span> contas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA CADASTRO -->
+        <div id="cadastro" class="conteudo-aba">
+            <h2><i class="fas fa-edit"></i> Gerenciamento de Categorias</h2>
+            
+            <!-- CONTROLES DE CATEGORIA -->
+            <div class="controles-categoria">
+                <button onclick="exportarCategorias()" class="btn-export">
+                    <i class="fas fa-file-export"></i> Exportar
+                </button>
+                <label class="btn-import">
+                    <i class="fas fa-file-import"></i> Importar
+                    <input type="file" id="importCategorias" accept=".json" 
+                           style="display: none;" onchange="importarCategorias(event)">
+                </label>
+                <button onclick="mostrarModalNovaCategoria()" class="btn-add">
+                    <i class="fas fa-plus"></i> Nova Categoria
+                </button>
+                <button onclick="restaurarCategoriasPadrao()" class="btn-restaurar">
+                    <i class="fas fa-undo"></i> Restaurar Padrão
+                </button>
+            </div>
+            
+            <!-- FORMULÁRIO DE NOVA CATEGORIA -->
+            <div class="form-cadastro">
+                <input type="text" id="nomeCadastro" placeholder="Digite o nome da nova categoria">
+                <button onclick="salvarCadastro()" class="btn-save">
+                    <i class="fas fa-save"></i> Adicionar
+                </button>
+            </div>
+            
+            <!-- GERENCIAMENTO DE CATEGORIAS PADRÃO -->
+            <div class="gerenciamento-categorias">
+                <h3><i class="fas fa-list-check"></i> Categorias Padrão do Sistema</h3>
+                <p class="subtitulo">Gerencie as categorias que já vem com o sistema:</p>
+                
+                <div class="filtro-categorias">
+                    <button onclick="filtrarCategorias('todas')" class="ativo">Todas</button>
+                    <button onclick="filtrarCategorias('ativas')">Visíveis</button>
+                    <button onclick="filtrarCategorias('ocultas')">Ocultas</button>
+                    <button onclick="filtrarCategorias('em-uso')">Em Uso</button>
+                </div>
+                
+                <div class="categorias-padrao-lista" id="listaCategoriasPadrao">
+                    <!-- Categorias padrão serão carregadas aqui -->
+                </div>
+                
+                <div class="resumo-acoes">
+                    <button onclick="ocultarTodasCategorias()" class="btn-ocultar">
+                        <i class="fas fa-eye-slash"></i> Ocultar Todas
+                    </button>
+                    <button onclick="mostrarTodasCategorias()" class="btn-mostrar">
+                        <i class="fas fa-eye"></i> Mostrar Todas
+                    </button>
+                </div>
+            </div>
+            
+            <!-- TABELA DE CATEGORIAS PERSONALIZADAS -->
+            <h3 style="margin-top: 40px;"><i class="fas fa-user-edit"></i> Minhas Categorias Personalizadas</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="50%">Nome da Categoria</th>
+                            <th width="30%">Data de Criação</th>
+                            <th width="20%">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaCadastros">
+                        <!-- Categorias personalizadas serão carregadas aqui -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- ESTATÍSTICAS -->
+            <div class="resumo-cartoes" style="margin-top: 30px;">
+                <div class="cartao">
+                    <h3><i class="fas fa-list"></i> Total de Categorias</h3>
+                    <p id="totalCategorias">0</p>
+                </div>
+                <div class="cartao">
+                    <h3><i class="fas fa-eye"></i> Categorias Visíveis</h3>
+                    <p id="categoriasVisiveis">0</p>
+                </div>
+                <div class="cartao">
+                    <h3><i class="fas fa-eye-slash"></i> Categorias Ocultas</h3>
+                    <p id="categoriasOcultas">0</p>
+                </div>
+                <div class="cartao">
+                    <h3><i class="fas fa-wallet"></i> Categorias em Uso</h3>
+                    <p id="categoriasEmUso">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA CALENDÁRIO -->
+        <div id="calendario" class="conteudo-aba">
+            <h2><i class="fas fa-calendar-alt"></i> Calendário Mensal</h2>
+            <div class="calendario-controls">
+                <input type="month" id="mesCalendario" onchange="renderizarCalendario()">
+                <button onclick="mesAnterior()" class="btn-nav"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="mesAtual()" class="btn-nav">Mês Atual</button>
+                <button onclick="proximoMes()" class="btn-nav"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div id="calendarioMes"></div>
+        </div>
+
+        <!-- ABA GRÁFICOS -->
+        <div id="graficos" class="conteudo-aba">
+            <h2><i class="fas fa-chart-pie"></i> Análise Gráfica</h2>
+            <div class="graficos-controls">
+                <select id="tipoGrafico" onchange="atualizarGraficos()">
+                    <option value="bar">Gráfico de Barras</option>
+                    <option value="pie">Gráfico de Pizza</option>
+                    <option value="line">Gráfico de Linha</option>
+                    <option value="doughnut">Rosca</option>
+                </select>
+                <select id="periodoGrafico" onchange="atualizarGraficos()">
+                    <option value="mes">Este Mês</option>
+                    <option value="ano">Este Ano</option>
+                    <option value="todos">Todos</option>
+                </select>
+            </div>
+            <div class="graficos-container">
+                <div class="grafico-box">
+                    <h3>Despesas por Categoria</h3>
+                    <canvas id="graficoCategorias"></canvas>
+                </div>
+                <div class="grafico-box">
+                    <h3>Evolução Mensal</h3>
+                    <canvas id="graficoEvolucao"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Backup -->
+    <div id="backupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2><i class="fas fa-database"></i> Sistema de Backup</h2>
+            
+            <div class="info-importante">
+                <h4><i class="fas fa-info-circle"></i> SEUS DADOS SÃO SALVOS AUTOMATICAMENTE!</h4>
+                <p><strong>⚠ Para não perder os dados ao limpar o navegador:</strong></p>
+                <ol>
+                    <li>Não marque "Cookies e dados de sites" quando limpar histórico</li>
+                    <li>Use o Exportar para ter um backup extra seguro</li>
+                    <li>Seus dados são salvos automaticamente a cada alteração</li>
+                </ol>
+            </div>
+            
+            <div class="backup-options">
+                <button onclick="exportarBackup()" class="btn-backup export">
+                    <i class="fas fa-file-export"></i> Exportar Backup
+                </button>
+                <label class="btn-backup import">
+                    <i class="fas fa-file-import"></i> Importar Backup
+                    <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importarBackup(event)">
+                </label>
+            </div>
+            
+            <div class="status-info">
+                <h4><i class="fas fa-hdd"></i> Status dos Dados:</h4>
+                <p>📊 Total de contas: <span id="totalContasBackup">0</span></p>
+                <p>🏷️ Categorias: <span id="totalCategoriasBackup">0</span></p>
+                <p>⏱️ Último salvamento: <span id="ultimoSalvamento">Agora mesmo</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edição de Categoria -->
+    <div id="editarModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharEditarModal()">&times;</span>
+            <h2><i class="fas fa-edit"></i> Editar Categoria</h2>
+            
+            <div class="form-edicao">
+                <input type="text" id="editarNome" placeholder="Digite o novo nome">
+                <input type="hidden" id="editarIndex">
+                
+                <div class="botoes-edicao">
+                    <button onclick="salvarEdicao()" class="btn-save">
+                        <i class="fas fa-save"></i> Salvar
+                    </button>
+                    <button onclick="fecharEditarModal()" class="btn-cancel">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+            
+            <div class="info-edicao">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                    <p><strong>Importante:</strong> Todas as contas que usam esta categoria serão automaticamente atualizadas com o novo nome.</p>
+                    <p style="font-size: 12px; margin-top: 5px;">Exemplo: "Academia" → "Academia Silvana"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div id="confirmarExclusaoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharConfirmarExclusao()">&times;</span>
+            <h2><i class="fas fa-exclamation-triangle"></i> Confirmar Exclusão</h2>
+            
+            <div class="confirmacao-conteudo">
+                <i class="fas fa-trash-alt" style="font-size: 50px; color: var(--danger-color); margin: 20px 0;"></i>
+                <p id="mensagemExclusao">Tem certeza que deseja excluir esta categoria?</p>
+                
+                <div class="info-exclusao" id="infoExclusao">
+                    <!-- Informações dinâmicas serão inseridas aqui -->
+                </div>
+                
+                <div class="botoes-confirmacao">
+                    <button onclick="confirmarExclusao()" class="btn-excluir">
+                        <i class="fas fa-trash"></i> Sim, Excluir
+                    </button>
+                    <button onclick="fecharConfirmarExclusao()" class="btn-cancel">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Nova Categoria -->
+    <div id="novaCategoriaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharNovaCategoriaModal()">&times;</span>
+            <h2><i class="fas fa-plus-circle"></i> Nova Categoria</h2>
+            
+            <div class="form-nova-categoria">
+                <input type="text" id="novaCategoriaNome" placeholder="Ex: Academia, Mercado, Transporte...">
+                <select id="novaCategoriaTipo">
+                    <option value="">Tipo de Categoria</option>
+                    <option value="despesa">💰 Despesa Fixa</option>
+                    <option value="variável">📊 Despesa Variável</option>
+                    <option value="lazer">🎉 Lazer</option>
+                    <option value="saude">🏥 Saúde</option>
+                    <option value="educacao">📚 Educação</option>
+                    <option value="outros">📦 Outros</option>
+                </select>
+                
+                <div class="botoes-nova-categoria">
+                    <button onclick="salvarNovaCategoria()" class="btn-save">
+                        <i class="fas fa-save"></i> Criar Categoria
+                    </button>
+                    <button onclick="fecharNovaCategoriaModal()" class="btn-cancel">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Ocultar Categoria Padrão -->
+    <div id="ocultarCategoriaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharOcultarModal()">&times;</span>
+            <h2><i class="fas fa-eye-slash"></i> Ocultar Categoria Padrão</h2>
+            
+            <div class="confirmacao-conteudo">
+                <i class="fas fa-exclamation-triangle" style="font-size: 50px; color: var(--warning-color); margin: 20px 0;"></i>
+                <p id="mensagemOcultar">Tem certeza que deseja ocultar esta categoria?</p>
+                
+                <div class="info-ocultar" id="infoOcultar">
+                    <!-- Informações dinâmicas serão inseridas aqui -->
+                </div>
+                
+                <div class="botoes-confirmacao">
+                    <button onclick="confirmarOcultarCategoria()" class="btn-ocultar-modal">
+                        <i class="fas fa-eye-slash"></i> Sim, Ocultar
+                    </button>
+                    <button onclick="fecharOcultarModal()" class="btn-cancel">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
