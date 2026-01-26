@@ -383,8 +383,12 @@ Analise nos gráficos mensalmente
 Manutenção:
 Exporte backup 1x por mês
 
+LINK DO PROJETO = https://wandersondfarias.github.io/Controle-finaceiro-2
+
+
 Limpe cache se notar lentidão
 
 Atualize categorias conforme necessário
+
 
 Pronto! Agora você tem um sistema completo de controle financeiro que salva tudo automaticamente! 💰🚀
