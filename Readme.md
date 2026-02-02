@@ -1,5 +1,6 @@
 # 📊 Controle Financeiro Pessoal — App Web
 
+
 <p align="center">
   <img src="./LOGO CALHAS SANTO EXPEDITO.jpg" width="120" />
 </p>
@@ -24,6 +25,8 @@
 </p>
 
 <hr>
+
+
 
 
 
@@ -358,6 +361,7 @@ Inclua prints, se possível
 </p>
 
 <hr>
+
 
 
 
