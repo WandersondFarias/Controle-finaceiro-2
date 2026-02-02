@@ -297,8 +297,6 @@ Descreva o problema
 
 Inclua prints, se possível
 
-
-
 <p align="center">
   <img src="./logo.jpg" width="120" />
 </p>
@@ -323,14 +321,6 @@ Inclua prints, se possível
 </p>
 
 <hr>
-
-
-
-
-
-
-
-
 
 
 
