@@ -2,8 +2,6 @@
 
 Um **aplicativo web completo para controle financeiro pessoal**, com interface moderna, salvamento automático de dados e múltiplas funcionalidades para organizar sua vida financeira de forma simples e eficiente.
 
-🔗 **Acesse o projeto online:**  
-👉 https://wandersondfarias.github.io/Controle-finaceiro-2
 
 ---
 
@@ -322,6 +320,7 @@ Inclua prints, se possível
 </p>
 
 <hr>
+
 
 
 
