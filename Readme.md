@@ -1,34 +1,6 @@
 # 📊 Controle Financeiro Pessoal — App Web
 
 
-<p align="center">
-  <img src="./LOGO CALHAS SANTO EXPEDITO.jpg" width="120" />
-</p>
-
-<p align="c https://wandersondfarias.github.io/Controle-finaceiro-2/enter">
-  <a href="" target="_blank">
-    🚀 <b>Acessar Sistema Online</b>
-  </a>
-</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Um **aplicativo web completo para controle financeiro pessoal**, com interface moderna, salvamento automático de dados e múltiplas funcionalidades para organizar sua vida financeira de forma simples e eficiente.
 
 
@@ -349,6 +321,7 @@ Inclua prints, se possível
 </p>
 
 <hr>
+
 
 
 
