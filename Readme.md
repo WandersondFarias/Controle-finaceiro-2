@@ -1,394 +1,329 @@
-📊 Controle Financeiro Pessoal - App Web
-Um aplicativo web completo para controle financeiro pessoal com interface moderna, persistência automática de dados e múltiplas funcionalidades.
+# 📊 Controle Financeiro Pessoal — App Web
 
+Um **aplicativo web completo para controle financeiro pessoal**, com interface moderna, salvamento automático de dados e múltiplas funcionalidades para organizar sua vida financeira de forma simples e eficiente.
 
-✨ Funcionalidades Principais
-📱 Interface Moderna
-✅ Modo Claro/Escuro - Alternância automática
+🔗 **Acesse o projeto online:**  
+👉 https://wandersondfarias.github.io/Controle-finaceiro-2
 
-✅ Design Responsivo - Funciona em todos os dispositivos
+---
 
-✅ Animações Suaves - Experiência de usuário fluida
+## ✨ Funcionalidades Principais
 
-✅ Ícones e Cores - Interface visualmente atraente
+### 📱 Interface Moderna
+- ✅ **Modo Claro/Escuro** (alternância automática)
+- ✅ **Design Responsivo** (desktop, tablet e mobile)
+- ✅ **Animações suaves** para melhor experiência
+- ✅ **Ícones e cores modernas**
 
+---
 
-💰 Controle Financeiro
-✅ Adicionar/Editar/Excluir contas
+### 💰 Controle Financeiro
+- ✅ Adicionar, editar e excluir contas
+- ✅ Categorias totalmente personalizáveis
+- ✅ Filtros avançados (data, categoria e status)
+- ✅ Status de pagamento (**Pago / Pendente**)
+- ✅ Alertas automáticos de vencimento
 
-✅ Categorias personalizáveis
+---
 
-✅ Filtros avançados por data, categoria e status
+### 📅 Calendário Integrado
+- ✅ Visualização mensal das contas
+- ✅ Destaque colorido para vencimentos
+- ✅ Navegação entre meses
+- ✅ Detalhes por dia
 
-✅ Status de pagamento (Pago/Pendente)
+---
 
-✅ Alertas automáticos para vencimentos
+### 📊 Análise Gráfica
+- ✅ Gráficos interativos:
+  - Barras
+  - Pizza
+  - Linha
+  - Rosca
+- ✅ Análise por categoria
+- ✅ Evolução mensal de gastos
+- ✅ Filtros por período (mês, ano ou geral)
 
+---
 
+## 🛡️ Persistência de Dados
 
+- ✅ Salvamento automático a cada alteração
+- ✅ **Backup duplo**:
+  - localStorage principal
+  - Backup oculto compactado
+- ✅ Importação e exportação de dados em **JSON**
+- ✅ Mantém dados mesmo após limpeza parcial do navegador
 
-📅 Calendário Integrado
+---
 
-✅ Visualização mensal de contas
+## 🚀 Como Usar
 
-✅ Destaque colorido para vencimentos
+### 🔧 Instalação Rápida
+1. Baixe os arquivos:
+   - `index.html`
+   - `style.css`
+   - `script.js`
+2. Coloque todos na **mesma pasta**
+3. Abra o arquivo `index.html` em qualquer navegador moderno
 
-✅ Navegação entre meses
+---
 
-✅ Visualização por dia com detalhes
+### ▶️ Primeiros Passos
+- Adicione suas contas na aba **Financeiro**
+- Crie categorias personalizadas
+- Acompanhe vencimentos no **Calendário**
+- Analise seus gastos nos **Gráficos**
 
+---
 
-📊 Análise Gráfica
+## 🔐 Sistema de Backup
 
-✅ Gráficos interativos (barras, pizza, linha, rosca)
+### 📁 Estrutura do Backup Duplo
 
-✅ Análise por categoria
 
-✅ Evolução mensal de gastos
+📁 Dados
+├── 📄 localStorage principal
+└── 🔐 Backup oculto compactado
 
-✅ Filtros por período (mês, ano, todos)
 
+### ⏰ Salvamento Automático
+- A cada **30 segundos** (se houver alterações)
+- Ao fechar ou sair da página
+- Ao minimizar o navegador
+- Ao reconectar à internet
 
+---
 
-🛡️ Persistência de Dados
+### ⚠️ IMPORTANTE — Para não perder dados
+Ao limpar o histórico do navegador:
 
-✅ Salvamento automático - A cada alteração
+✅ **PODE marcar**
+- Histórico de navegação
+- Imagens e arquivos em cache
+- Cookies (opcional)
 
-✅ Backup duplo - localStorage + backup oculto
+❌ **NÃO marque**
+- Cookies e outros dados de sites
+- Dados de sites e plug-ins
 
-✅ Sobrevive à limpeza do histórico (se configurado corretamente)
+---
 
-✅ Exportação/Importação de dados em JSON
+## 📱 Telas do Aplicativo
 
+### 1️⃣ Aba Financeiro
+- Formulário de cadastro de contas
+- Lista com filtros avançados
+- Cartões de resumo:
+  - Total Geral
+  - Total Pago
+  - Total Pendente
+  - Alertas
 
-🚀 Como Usar
-Instalação Rápida
-Baixe os 3 arquivos:
+### 2️⃣ Aba Categorias
+- Cadastro de categorias personalizadas
+- Listagem completa
+- Edição e exclusão
 
-index.html
+### 3️⃣ Aba Calendário
+- Visualização mensal
+- Cores indicativas:
+  - 🟡 Próximo do vencimento
+  - 🔴 Atrasado
 
-style.css
+### 4️⃣ Aba Gráficos
+- Gráficos por categoria
+- Evolução mensal
+- Filtros por período
 
-script.js
+---
 
-Coloque-os na mesma pasta
+## 🎨 Personalização
 
-Abra o index.html em qualquer navegador moderno
+### 🌗 Modo Claro / Escuro
+- Alternância automática
+- Preferência salva automaticamente
+- Cores otimizadas para cada modo
 
+---
 
-Primeiros Passos
-Adicione suas primeiras contas na aba "Financeiro"
+### 📂 Categorias Padrão
 
-Crie categorias personalizadas na aba "Categorias"
+INTERNET, CEMIG, CODAU, MERCADO, GÁS,
+VAREJÃO, AÇOUGUE, FARMÁCIA, ACADEMIA,
+VIAGEM, TELEFONE, BANCO, NUBANK,
+UNIMED, CONSTRUÇÃO, IPTU, OUTROS
 
-Acompanhe vencimentos no Calendário
 
-Analise seus gastos com os Gráficos
+---
 
+## 📊 Estatísticas e Alertas
 
+### 🚨 Alertas Automáticos
+- 🔴 Contas atrasadas
+- 🟡 Contas próximas do vencimento (até 7 dias)
+- 🟢 Contas pagas
 
-🔧 Sistema de Persistência
-Como os dados são salvos:
+### 📈 Resumo Financeiro
+- **Total Geral**
+- **Total Pago**
+- **Total Pendente**
+- **Alertas ativos**
 
+---
 
+## 🔐 Backup e Segurança
 
-📁 Sistema de Backup Duplo
-├── 📄 localStorage principal (dados completos)
-└── 🔐 Backup oculto (dados compactados)
+### 📤 Exportar Dados
+Gera um arquivo JSON:
 
+backup_financeiro_AAAA-MM-DD.json
 
 
-Salvamento Automático:
-⏰ A cada 30 segundos (se houver alterações)
+### 📥 Importar Dados
+1. Clique em **Backup** no topo
+2. Selecione **Importar Backup**
+3. Escolha o arquivo JSON salvo
 
-🚪 Ao fechar/sair da página
+💡 **Dicas**
+- Faça backup 1x por mês
+- Guarde em nuvem ou pendrive
+- Teste a importação periodicamente
 
-📱 Ao minimizar o navegador
+---
 
-📶 Ao reconectar à internet
+## 📱 Dispositivos Suportados
 
+- 💻 **Desktop** (1200px+)
+- 📱 **Tablet** (768px – 1024px)
+- 📱 **Smartphone** (< 768px)
 
+### Layout Adaptativo
+- Desktop: 4 colunas
+- Tablet: 2 colunas
+- Mobile: 1 coluna + botões maiores
 
-⚠️ IMPORTANTE - Para não perder dados:
-Ao limpar histórico do navegador:
+---
 
+## 🛠️ Tecnologias Utilizadas
 
-✅ PODE marcar:
-   - Histórico de navegação
-   - Imagens e arquivos em cache
-   - Cookies (opcional)
+| Tecnologia | Versão | Finalidade |
+|----------|--------|-----------|
+| HTML5 | — | Estrutura |
+| CSS3 | — | Estilos e responsividade |
+| JavaScript (ES6) | — | Lógica da aplicação |
+| Chart.js | 3.x | Gráficos |
+| Font Awesome | 6.4.0 | Ícones |
+| localStorage | — | Persistência de dados |
 
-❌ NÃO marque:
-   - Cookies e outros dados de sites
-   - Dados de sites e plug-ins
+## 📁 Estrutura do Projeto
 
-
-   📱 Telas do Aplicativo
-1. Aba Financeiro
-Formulário para adicionar contas
-
-Lista com filtros avançados
-
-Cartões de resumo (Total, Pago, Pendente, Alertas)
-
-
-2. Aba Categorias
-Cadastro de categorias personalizadas
-
-Lista de todas as categorias
-
-Edição e exclusão
-
-3. Aba Calendário
-Visualização mensal de contas
-
-Cores para vencimentos (amarelo: próximo, vermelho: atrasado)
-
-Navegação entre meses
-
-
-4. Aba Gráficos
-Gráfico de categorias (barras/pizza/linha/rosca)
-
-Gráfico de evolução mensal
-
-Filtros por período
-
-🎨 Personalização
-Modo Escuro/Claro
-Alternância automática
-
-Configuração salva automaticamente
-
-Cores otimizadas para cada modo
-
-
-
-Categorias Padrão Incluídas:
-text
-INTERNET, CEMIG, CODAU, Mercado, GÁS, 
-VAREJÃO, AÇOUGUE, FARMÁCIA, ACADEMIA, 
-VIAGEM, TELEFONE, BANCO, NUBANK, 
-Unimed, CONSTRUÇÃO, IPTU, Outros
-
-
-📊 Estatísticas e Alertas
-Alertas Automáticos:
-🔴 Contas atrasadas (vermelho)
-
-🟡 Contas próximas do vencimento (amarelo, 7 dias)
-
-🟢 Contas pagas (verde)
-
-Resumo Financeiro:
-Total Geral: Soma de todas as contas
-
-Total Pago: Contas já quitadas
-
-Total Pendente: Contas em aberto
-
-Alertas: Contas vencendo/vencidas
-
-
-🔐 Backup e Segurança
-Exportar Dados:
-javascript
-// Gera arquivo JSON com todos os dados
-// Nome: backup_financeiro_AAAA-MM-DD.json
-
-
-
-Importar Dados:
-Clique em "Backup" no topo
-
-Selecione "Importar Backup"
-
-Escolha o arquivo JSON exportado anteriormente
-
-Dicas de Backup:
-Exporte 1x por mês para segurança extra
-
-Guarde o arquivo em nuvem ou outro dispositivo
-
-Teste a importação periodicamente
-
-
-Dispositivos Suportados:
-💻 Desktop (1200px+)
-
-📱 Tablet (768px - 1024px)
-
-📱 Smartphone (< 768px)
-
-Layouts Adaptativos:
-Desktop: 4 colunas de cartões, formulário em linha
-
-Tablet: 2 colunas de cartões, formulário adaptado
-
-Mobile: 1 coluna, menu vertical, botões maiores
-
-
-
-
-🛠️ Tecnologias Utilizadas
-Tecnologia	Versão	Finalidade
-HTML5	-	Estrutura da aplicação
-CSS3	-	Estilos e responsividade
-JavaScript (ES6)	-	Lógica e interatividade
-Chart.js	3.x	Gráficos interativos
-Font Awesome	6.4.0	Ícones e símbolos
-localStorage	-	Persistência de dados
-
-
-
-📁 Estrutura do Projeto
-text
 controle-financeiro/
-├── 📄 index.html          # Estrutura principal
-├── 🎨 style.css           # Estilos e temas
-├── ⚡ script.js           # Lógica da aplicação
-└── 📊 README.md          # Este arquivo
+├── index.html
+├── style.css
+├── script.js
+└── README.md
 
+---
 
+## 🚨 Solução de Problemas
 
-🚨 Solução de Problemas
-Dados sumiram?
-Verifique se marcou "Cookies e dados de sites" ao limpar histórico
+**Dados sumiram?**
+- Verifique se limpou “dados de sites”
+- Importe o último backup
 
-Importe seu último backup
+**App lento?**
+- Limpe cache antigo
+- Evite mais de 1000 contas
+- Use navegador atualizado
 
-Contate suporte se persistir
+**Gráficos não carregam?**
+- Verifique conexão com internet
+- Recarregue a página (F5)
 
+---
 
+## 🔄 Atualizações Futuras
 
-App lento?
-Limpe cache antigo (o app faz isso automaticamente)
+### 🚀 v2.1
+- Login Google/Facebook
+- Sincronização em nuvem
+- Relatórios em PDF
+- Notificações por e-mail
+- App PWA (instalável)
 
-Exporte e reinicie se tiver muitas contas (> 1000)
+### 🚀 v2.2
+- Orçamento mensal
+- Metas de economia
+- Categorias inteligentes
+- Importação de extrato bancário
 
-Use um navegador atualizado
+---
 
-Gráficos não carregam?
-Verifique conexão com internet (para CDN)
+## 👥 Contribuição
 
-Recarregue a página (F5)
+1. Faça um Fork
+2. Crie uma branch:
+   ```bash
+   git checkout -b feature/nova-funcionalidade
+Commit:
+git commit -m "Add nova funcionalidade"
 
-Troque tipo de gráfico temporariamente
-
-
-
-🔄 Atualizações Futuras
-Planejado para v2.1:
-Login com Google/Facebook
-
-Sincronização em nuvem
-
-Relatórios em PDF
-
-Notificações por email
-
-App PWA (instalável)
-
-
-
-Planejado para v2.2:
-Orçamento mensal
-
-Metas de economia
-
-Categorias inteligentes
-
-Importação de extrato bancário
-
-
-
-👥 Contribuição
-Como contribuir:
-Fork o projeto
-
-Crie uma branch (git checkout -b feature/nova-funcionalidade)
-
-Commit suas mudanças (git commit -m 'Add nova funcionalidade')
-
-Push para a branch (git push origin feature/nova-funcionalidade)
+ Push
+git push origin feature/nova-funcionalidade
 
 Abra um Pull Request
 
-Código de Conduta:
-Respeite outros contribuidores
-
-Mantenha o foco na melhoria do projeto
-
-Documente suas alterações
-
-
 📄 Licença
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
 
-text
-MIT License
+Este projeto está sob a Licença MIT.
 
-Copyright (c) 2024 Controle Financeiro App
+ 🙏 Agradecimentos
 
-Permissão é concedida, gratuitamente, a qualquer pessoa que obtenha uma cópia
-deste software e arquivos de documentação associados...
+Chart.js
 
+Font Awesome
 
-🙏 Agradecimentos
-Chart.js por gráficos incríveis
+Comunidade Open Source
 
-Font Awesome pelos ícones
-
-Comunidade Open Source por todas as bibliotecas
-
-Você por usar este aplicativo! ❤️
-
+Você, por usar este app ❤️
 
 📞 Suporte
-Encontrou um bug? Tem uma sugestão?
+
+Encontrou um bug ou tem uma sugestão?
 
 Abra uma issue no repositório
 
-Descreva detalhadamente o problema
+Descreva o problema
 
-Inclua prints se possível
+Inclua prints, se possível
 
-Aguarde nossa resposta
+<p align="center">
+  <img src="./LOGO CALHAS SANTO EXPEDITO.jpg" width="120" />
+</p>
 
+<p align="center">
+  <a href="https://wandersondfarias.github.io/SISTEMA-FINACEIRO-CALHAS-SANTO-EXPEDITO/" target="_blank">
+    🚀 <b>Acessar Sistema Online</b>
+  </a>
+</p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Desenvolvido%20por-Wanderson%20de%20Farias-blue?style=for-the-badge">
+</p>
 
+<p align="center">
+  <a href="https://github.com/wandersondfarias">
+    <img src="https://img.shields.io/badge/GitHub-Perfil-black?style=flat&logo=github">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/wandersonfariaswf/">
+    <img src="https://img.shields.io/badge/LinkedIn-Conectar-blue?style=flat&logo=linkedin">
+  </a>
+</p>
 
-<div align="center">
-Desenvolvido com ❤️ por wanderson de farias para ajudar no controle financeiro pessoal
-⭐ Dê uma estrela no projeto se gostou! ⭐
-
-https://github.com/wandersondfarias
-
-Versão 2.0 | Última atualização: Janeiro 2026
-
-
-
-🎯 Guia Rápido de Uso
-Dia a Dia:
-Abra o aplicativo
-
-Adicione suas contas conforme chegam
-
-Marque como Pago quando pagar
-
-Acompanhe no calendário
-
-Analise nos gráficos mensalmente
-
-
-Manutenção:
-Exporte backup 1x por mês
-
-LINK DO PROJETO = https://wandersondfarias.github.io/Controle-finaceiro-2
+<hr>
 
 
-Limpe cache se notar lentidão
-
-Atualize categorias conforme necessário
 
 
-Pronto! Agora você tem um sistema completo de controle financeiro que salva tudo automaticamente! 💰🚀
+
