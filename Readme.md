@@ -301,7 +301,7 @@ Inclua prints, se possível
   <img src="./logo.jpg" width="120" />
 </p>
 
-<p align="c https://wandersondfarias.github.io/Controle-finaceiro-2/enter">
+<p align="https://wandersondfarias.github.io/Controle-finaceiro-2/enter">
   <a href="" target="_blank">
     🚀 <b>Acessar Sistema Online</b>
   </a>
@@ -321,6 +321,7 @@ Inclua prints, se possível
 </p>
 
 <hr>
+
 
 
 
